@@ -2,7 +2,7 @@
 
 **Carros que aprenden a manejar solos por evolución, sin que nadie les enseñe.**
 
-🏁 **Ver el simulador en el navegador:** https://USUARIO.github.io/inteligencia-artificial-y-algoritmos-geneticos/
+🏁 **Ver el simulador en el navegador:** https://gersainbarron.github.io/inteligencia-artificial-y-algoritmos-geneticos/
 
 Autor: Gersain Barron Velazquez · [gersadesign.com](https://gersadesign.com)
 
@@ -140,6 +140,9 @@ python scripts/manejar_teclado.py               # manejar tú mismo con el tecla
 | `blender` | Scripts para construir pistas y carro |
 | `scripts` | Campañas, evaluación, análisis y utilidades |
 | `resultados` | Tablas y contrastes estadísticos |
+
+## Licencia
+El código de este proyecto se publica con licencia MIT (ver [LICENSE](LICENSE)). Los datos y bibliotecas de terceros conservan sus propias licencias:
 
 ## Créditos y licencias de terceros
 - **Trazados de pista:** [TUM racetrack-database](https://github.com/TUMFTM/racetrack-database), con licencia LGPL-3.0. Ver `pistas/fuente_tum/`.
