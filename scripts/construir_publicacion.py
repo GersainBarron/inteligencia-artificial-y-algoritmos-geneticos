@@ -40,6 +40,12 @@ def parchar_visor(docs):
         js = js.replace(a, b)
     (docs / "visor.js").write_text(js, encoding="utf-8")
     html = (docs / "index.html").read_text(encoding="utf-8").replace('href="/"', 'href="./"')
+    marca = '<a href="./" class="marca">evocarros</a>'
+    if marca not in html:
+        raise SystemExit("no encontre la marca en index.html")
+    html = html.replace(marca, marca + ' <a href="metodo.html" style="color:#ff6b35;margin-left:1rem;'
+                        'text-decoration:none;font-weight:600">Método y matemáticas</a>')
+    shutil.copy2(RAIZ / "web" / "metodo.html", docs / "metodo.html")
     (docs / "index.html").write_text(html, encoding="utf-8")
     (docs / "panel.html").unlink(missing_ok=True)   # el panel necesita el servidor local
     (docs / ".nojekyll").write_text("", encoding="utf-8")
@@ -81,7 +87,7 @@ def construir_docs():
 
 def main():
     DEST.mkdir(exist_ok=True)
-    for rel in ["evocarros", "scripts", "sandbox", "configs", "tests", "pistas", "blender", "resultados",
+    for rel in ["evocarros", "scripts", "sandbox", "configs", "tests", "pistas", "blender", "resultados", "web",
                 "visor", "panel.bat", "manejar.bat", "ANALISIS_FASE8.md", "REFERENCIAS_BLENDER.md"]:
         if (RAIZ / rel).exists():
             copiar(rel)

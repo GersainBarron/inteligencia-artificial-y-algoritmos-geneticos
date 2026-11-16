@@ -4,6 +4,8 @@
 
 🏁 **Ver el simulador en el navegador:** https://gersainbarron.github.io/inteligencia-artificial-y-algoritmos-geneticos/
 
+📐 **Método y matemáticas, explicados paso a paso:** https://gersainbarron.github.io/inteligencia-artificial-y-algoritmos-geneticos/metodo.html
+
 Autor: Gersain Barron Velazquez · [gersadesign.com](https://gersadesign.com)
 
 ---
