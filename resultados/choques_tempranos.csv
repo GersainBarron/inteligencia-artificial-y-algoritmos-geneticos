@@ -1,0 +1,61 @@
+corrida,condicion,semilla,episodios_contados,n_choque,frac_choque,motivos,filas_comparadas,reproduce_oficial
+B-GA_s01,B-GA,1,10000,7694,0.7694,"{""estancamiento"": 1813, ""choque"": 7694, ""tiempo"": 493}",198,True
+B-GA_s02,B-GA,2,10000,8461,0.8461,"{""estancamiento"": 1187, ""choque"": 8461, ""tiempo"": 352}",198,True
+B-GA_s03,B-GA,3,10000,7836,0.7836,"{""estancamiento"": 2107, ""choque"": 7836, ""tiempo"": 57}",200,True
+B-GA_s04,B-GA,4,10000,9271,0.9271,"{""choque"": 9271, ""estancamiento"": 693, ""tiempo"": 36}",200,True
+B-GA_s05,B-GA,5,10000,5996,0.5996,"{""estancamiento"": 3041, ""choque"": 5996, ""tiempo"": 743, ""vuelta"": 220}",195,True
+B-GA_s06,B-GA,6,10000,8511,0.8511,"{""estancamiento"": 1453, ""choque"": 8511, ""tiempo"": 36}",200,True
+B-GA_s07,B-GA,7,10000,9291,0.9291,"{""estancamiento"": 562, ""choque"": 9291, ""tiempo"": 147}",200,True
+B-GA_s08,B-GA,8,10000,9070,0.907,"{""choque"": 9070, ""estancamiento"": 869, ""tiempo"": 61}",200,True
+B-GA_s09,B-GA,9,10000,8365,0.8365,"{""estancamiento"": 719, ""choque"": 8365, ""tiempo"": 861, ""vuelta"": 55}",195,True
+B-GA_s10,B-GA,10,10000,9373,0.9373,"{""choque"": 9373, ""estancamiento"": 582, ""tiempo"": 45}",200,True
+B-GA_s11,B-GA,11,10000,6699,0.6699,"{""estancamiento"": 2683, ""choque"": 6699, ""tiempo"": 565, ""vuelta"": 53}",195,True
+B-GA_s12,B-GA,12,10000,9094,0.9094,"{""choque"": 9094, ""estancamiento"": 874, ""tiempo"": 32}",200,True
+B-GA_s13,B-GA,13,10000,9101,0.9101,"{""estancamiento"": 873, ""choque"": 9101, ""tiempo"": 26}",200,True
+B-GA_s14,B-GA,14,10000,7610,0.761,"{""choque"": 7610, ""estancamiento"": 1591, ""tiempo"": 733, ""vuelta"": 66}",195,True
+B-GA_s15,B-GA,15,10000,9500,0.95,"{""estancamiento"": 461, ""choque"": 9500, ""tiempo"": 39}",200,True
+B-GA_s16,B-GA,16,10000,9782,0.9782,"{""choque"": 9782, ""estancamiento"": 180, ""tiempo"": 38}",200,True
+B-GA_s17,B-GA,17,10000,9384,0.9384,"{""estancamiento"": 541, ""choque"": 9384, ""tiempo"": 75}",200,True
+B-GA_s18,B-GA,18,10000,7337,0.7337,"{""estancamiento"": 672, ""choque"": 7337, ""tiempo"": 1991}",200,True
+B-GA_s19,B-GA,19,10000,8138,0.8138,"{""estancamiento"": 1797, ""choque"": 8138, ""tiempo"": 65}",200,True
+B-GA_s20,B-GA,20,10000,6811,0.6811,"{""choque"": 6811, ""estancamiento"": 3048, ""tiempo"": 141}",200,True
+C-GA_s01,C-GA,1,10000,7831,0.7831,"{""estancamiento"": 793, ""choque"": 7831, ""tiempo"": 1151, ""vuelta"": 225}",195,True
+C-GA_s02,C-GA,2,10000,8504,0.8504,"{""estancamiento"": 603, ""choque"": 8504, ""tiempo"": 893}",198,True
+C-GA_s03,C-GA,3,10000,8047,0.8047,"{""estancamiento"": 837, ""choque"": 8047, ""tiempo"": 897, ""vuelta"": 219}",195,True
+C-GA_s04,C-GA,4,10000,8000,0.8,"{""choque"": 8000, ""estancamiento"": 797, ""tiempo"": 1063, ""vuelta"": 140}",195,True
+C-GA_s05,C-GA,5,10000,6137,0.6137,"{""estancamiento"": 2639, ""choque"": 6137, ""tiempo"": 1188, ""vuelta"": 36}",195,True
+C-GA_s06,C-GA,6,10000,8474,0.8474,"{""estancamiento"": 678, ""choque"": 8474, ""tiempo"": 825, ""vuelta"": 23}",195,True
+C-GA_s07,C-GA,7,10000,8181,0.8181,"{""estancamiento"": 173, ""choque"": 8181, ""tiempo"": 1437, ""vuelta"": 209}",195,True
+C-GA_s08,C-GA,8,10000,7359,0.7359,"{""choque"": 7359, ""estancamiento"": 1195, ""tiempo"": 1216, ""vuelta"": 230}",195,True
+C-GA_s09,C-GA,9,10000,6628,0.6628,"{""estancamiento"": 1630, ""choque"": 6628, ""tiempo"": 1018, ""vuelta"": 724}",195,True
+C-GA_s10,C-GA,10,10000,8222,0.8222,"{""choque"": 8222, ""estancamiento"": 940, ""tiempo"": 806, ""vuelta"": 32}",195,True
+C-GA_s11,C-GA,11,10000,7094,0.7094,"{""estancamiento"": 1678, ""choque"": 7094, ""tiempo"": 821, ""vuelta"": 407}",195,True
+C-GA_s12,C-GA,12,10000,7464,0.7464,"{""choque"": 7464, ""estancamiento"": 1564, ""tiempo"": 829, ""vuelta"": 143}",195,True
+C-GA_s13,C-GA,13,10000,5970,0.597,"{""estancamiento"": 3056, ""choque"": 5970, ""tiempo"": 576, ""vuelta"": 398}",195,True
+C-GA_s14,C-GA,14,10000,6898,0.6898,"{""choque"": 6898, ""estancamiento"": 1480, ""tiempo"": 1146, ""vuelta"": 476}",195,True
+C-GA_s15,C-GA,15,10000,8580,0.858,"{""estancamiento"": 547, ""choque"": 8580, ""tiempo"": 873}",198,True
+C-GA_s16,C-GA,16,10000,8543,0.8543,"{""choque"": 8543, ""estancamiento"": 277, ""tiempo"": 1180}",198,True
+C-GA_s17,C-GA,17,10000,8263,0.8263,"{""estancamiento"": 836, ""choque"": 8263, ""tiempo"": 881, ""vuelta"": 20}",195,True
+C-GA_s18,C-GA,18,10000,7978,0.7978,"{""estancamiento"": 1216, ""choque"": 7978, ""tiempo"": 806}",197,True
+C-GA_s19,C-GA,19,10000,8667,0.8667,"{""estancamiento"": 932, ""choque"": 8667, ""tiempo"": 401}",198,True
+C-GA_s20,C-GA,20,10000,7742,0.7742,"{""choque"": 7742, ""estancamiento"": 1387, ""tiempo"": 779, ""vuelta"": 92}",195,True
+B-ES_s01,B-ES,1,10000,9783,0.9783,"{""estancamiento"": 34, ""choque"": 9783, ""tiempo"": 183}",101,True
+B-ES_s02,B-ES,2,10000,9831,0.9831,"{""estancamiento"": 64, ""choque"": 9831, ""tiempo"": 105}",101,True
+B-ES_s03,B-ES,3,10000,9515,0.9515,"{""estancamiento"": 183, ""choque"": 9515, ""tiempo"": 302}",101,True
+B-ES_s04,B-ES,4,10000,9112,0.9112,"{""choque"": 9112, ""estancamiento"": 235, ""tiempo"": 653}",101,True
+B-ES_s05,B-ES,5,10000,7947,0.7947,"{""estancamiento"": 33, ""choque"": 7947, ""tiempo"": 2020}",101,True
+B-ES_s06,B-ES,6,10000,9792,0.9792,"{""estancamiento"": 36, ""choque"": 9792, ""tiempo"": 172}",101,True
+B-ES_s07,B-ES,7,10000,9875,0.9875,"{""estancamiento"": 32, ""choque"": 9875, ""tiempo"": 93}",101,True
+B-ES_s08,B-ES,8,10000,9712,0.9712,"{""choque"": 9712, ""estancamiento"": 100, ""tiempo"": 188}",101,True
+B-ES_s09,B-ES,9,10000,9867,0.9867,"{""estancamiento"": 36, ""choque"": 9867, ""tiempo"": 97}",101,True
+B-ES_s10,B-ES,10,10000,9774,0.9774,"{""choque"": 9774, ""estancamiento"": 41, ""tiempo"": 185}",101,True
+C-ES_s01,C-ES,1,10000,9780,0.978,"{""estancamiento"": 35, ""choque"": 9780, ""tiempo"": 185}",101,True
+C-ES_s02,C-ES,2,10000,9832,0.9832,"{""estancamiento"": 63, ""choque"": 9832, ""tiempo"": 105}",101,True
+C-ES_s03,C-ES,3,10000,9516,0.9516,"{""estancamiento"": 195, ""choque"": 9516, ""tiempo"": 289}",101,True
+C-ES_s04,C-ES,4,10000,9537,0.9537,"{""choque"": 9537, ""estancamiento"": 203, ""tiempo"": 260}",101,True
+C-ES_s05,C-ES,5,10000,8528,0.8528,"{""estancamiento"": 34, ""choque"": 8528, ""tiempo"": 1438}",101,True
+C-ES_s06,C-ES,6,10000,9788,0.9788,"{""estancamiento"": 36, ""choque"": 9788, ""tiempo"": 176}",101,True
+C-ES_s07,C-ES,7,10000,9874,0.9874,"{""estancamiento"": 32, ""choque"": 9874, ""tiempo"": 94}",101,True
+C-ES_s08,C-ES,8,10000,9782,0.9782,"{""choque"": 9782, ""estancamiento"": 33, ""tiempo"": 185}",101,True
+C-ES_s09,C-ES,9,10000,9812,0.9812,"{""estancamiento"": 36, ""choque"": 9812, ""tiempo"": 152}",101,True
+C-ES_s10,C-ES,10,10000,9774,0.9774,"{""choque"": 9774, ""estancamiento"": 39, ""tiempo"": 187}",101,True

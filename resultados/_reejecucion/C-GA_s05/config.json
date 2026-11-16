@@ -1,0 +1,21 @@
+{
+  "condicion": "C-GA",
+  "semilla": 5,
+  "corrida": null,
+  "pista": "pistas/mexico/pista.json",
+  "t_max": 250.0,
+  "episodios": 100000,
+  "procesos": 6,
+  "runs": "C:\\Users\\gersa\\OneDrive\\Documentos\\redes neuronales basicas\\resultados\\_reejecucion",
+  "mu": 50,
+  "lambda_": 50,
+  "sigma_pesos": 0.1,
+  "sigma_ang_grados": 10.0,
+  "sigma_alc_W": 0.2,
+  "sigma_v": 1.0,
+  "t_inicial": 30.0,
+  "factor_t": 1.5,
+  "protocolo": "v0.10",
+  "motor": "numba",
+  "creada": "2026-11-16T00:54:58"
+}

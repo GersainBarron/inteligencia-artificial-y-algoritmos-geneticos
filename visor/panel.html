@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>evocarros · panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body class="panel">
+<header>
+  <span class="marca" style="color:var(--acento);font-weight:700">evocarros · panel</span>
+  <a href="/visor" style="color:var(--texto)">abrir visor 3D →</a>
+  <span class="sep"></span>
+  <button data-orden="pausar" data-corrida="todas">Pausar todas</button>
+  <button data-orden="correr" data-corrida="todas">Reanudar todas</button>
+  <button data-orden="detener" data-corrida="todas" class="peligro">Detener todas</button>
+  <span id="hora" style="margin-left:auto;color:var(--tenue)"></span>
+</header>
+<main>
+  <div class="tarjetas">
+    <div class="tarjeta" id="tGpu">GPU<b>—</b></div>
+    <div class="tarjeta" id="tDisco">Disco libre (runs)<b>—</b></div>
+    <div class="tarjeta" id="tCorridas">Corridas<b>—</b></div>
+    <div class="tarjeta" id="tGuardian">Guardián<b>—</b><small id="tGuardianDet" style="color:var(--tenue)"></small></div>
+  </div>
+  <table class="corridas">
+    <thead><tr><th>Corrida</th><th>Estado</th><th>Generación</th><th>Mejor aptitud</th><th>% completa vuelta</th>
+      <th>Mejor vuelta</th><th>Tiempo restante</th><th>Orden</th><th></th></tr></thead>
+    <tbody id="filas"><tr><td colspan="9">cargando…</td></tr></tbody>
+  </table>
+  <canvas class="grafica" id="grafica"></canvas>
+  <p style="color:var(--tenue)">La gráfica muestra la aptitud máxima (línea) y media (tenue) por generación de cada corrida.
+    Los botones solo escriben el archivo <code>control.json</code> de la corrida; el entrenador lo lee al terminar
+    cada generación.</p>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+const fmtT = (s) => s == null ? "—" : s >= 3600 ? `${(s / 3600).toFixed(1)} h` : s >= 60 ? `${Math.round(s / 60)} min` : `${Math.round(s)} s`;
+const LIM_GPU = 85, LIM_DISCO = 20;
+
+async function orden(corrida, orden) {
+  if (orden === "detener" && !confirm(`¿Detener ${corrida === "todas" ? "todas las corridas" : corrida}? Quedarán como incompletas.`)) return;
+  const r = await fetch("/api/control", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ corrida, orden }) });
+  if (!r.ok) alert((await r.json()).error);
+  actualizar();
+}
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-orden]");
+  if (b) orden(b.dataset.corrida, b.dataset.orden);
+});
+
+function dibujar(corridas) {
+  const cv = $("grafica"), r = cv.getBoundingClientRect(), ctx = cv.getContext("2d");
+  cv.width = r.width * devicePixelRatio; cv.height = r.height * devicePixelRatio; ctx.scale(devicePixelRatio, devicePixelRatio);
+  const W = r.width, H = r.height, m = { l: 44, r: 12, t: 12, b: 26 };
+  ctx.clearRect(0, 0, W, H);
+  const series = corridas.filter((c) => c.fitness.length);
+  if (!series.length) { ctx.fillStyle = "#8a96a3"; ctx.fillText("sin datos de aptitud todavía", m.l, H / 2); return; }
+  const gMax = Math.max(...series.flatMap((c) => c.fitness.map((f) => f.generacion)), 1);
+  const aMax = Math.max(...series.flatMap((c) => c.fitness.map((f) => f.aptitud_max || 0)), 1);
+  const X = (g) => m.l + (g / gMax) * (W - m.l - m.r), Y = (a) => H - m.b - (a / aMax) * (H - m.t - m.b);
+  ctx.strokeStyle = "#2a323c"; ctx.fillStyle = "#8a96a3"; ctx.font = "11px system-ui";
+  for (let k = 0; k <= 4; k++) { const a = aMax * k / 4; ctx.beginPath(); ctx.moveTo(m.l, Y(a)); ctx.lineTo(W - m.r, Y(a)); ctx.stroke(); ctx.fillText(a.toFixed(0), 6, Y(a) + 4); }
+  ctx.fillText("generación", W - 80, H - 6);
+  series.forEach((c, i) => {
+    const col = `hsl(${(i * 67) % 360} 75% 60%)`;
+    for (const [campo, alfa, ancho] of [["aptitud_media", 0.35, 1], ["aptitud_max", 1, 2]]) {
+      ctx.strokeStyle = col; ctx.globalAlpha = alfa; ctx.lineWidth = ancho; ctx.beginPath();
+      c.fitness.forEach((f, k) => (k ? ctx.lineTo : ctx.moveTo).call(ctx, X(f.generacion), Y(f[campo] || 0)));
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1; ctx.fillStyle = col; ctx.fillText(c.id, m.l + 8, m.t + 12 + 14 * i);
+  });
+}
+
+async function actualizar() {
+  try {
+    const [sis, corridas] = await Promise.all([fetch("/api/sistema").then((r) => r.json()), fetch("/api/corridas").then((r) => r.json())]);
+    $("hora").textContent = sis.hora.replace("T", " ");
+    $("tGpu").querySelector("b").textContent = sis.gpu_c == null ? "n/d" : `${sis.gpu_c} °C`;
+    $("tGpu").classList.toggle("alerta", sis.gpu_c != null && sis.gpu_c > LIM_GPU);
+    $("tDisco").querySelector("b").textContent = `${sis.disco_libre_gb} GB`;
+    $("tDisco").classList.toggle("alerta", sis.disco_libre_gb < LIM_DISCO);
+    $("tCorridas").querySelector("b").textContent = corridas.length;
+    const g = sis.guardian || {};
+    $("tGuardian").querySelector("b").textContent = !g.activo ? "apagado" : (g.pausado_por ? "PAUSÓ" : "vigilando");
+    $("tGuardian").classList.toggle("alerta", !g.activo || !!g.pausado_por || (g.colgadas || []).length > 0);
+    $("tGuardianDet").textContent = !g.activo ? "no está corriendo" :
+      (g.pausado_por ? `por ${g.pausado_por}` : `CPU ${g.cpu_disponible ? g.cpu_c + " °C" : "sin sensor"}`) +
+      ((g.colgadas || []).length ? ` · sin avance: ${g.colgadas.join(", ")}` : "");
+    $("filas").innerHTML = corridas.length ? corridas.map((c) => `<tr>
+      <td><a href="/visor?corrida=${encodeURIComponent(c.id)}" style="color:var(--texto)">${c.id}</a></td>
+      <td><span class="estado ${c.estado || ""}">${c.estado || "—"}</span></td>
+      <td>${c.generacion ?? "—"}${c.generaciones_max ? " / " + c.generaciones_max : ""}</td>
+      <td>${c.mejor_aptitud != null ? c.mejor_aptitud.toFixed(2) : "—"}</td>
+      <td>${c.pct_vuelta != null ? c.pct_vuelta.toFixed(1) + "%" : "—"}</td>
+      <td>${c.mejor_t_vuelta != null ? c.mejor_t_vuelta.toFixed(2) + " s" : "—"}</td>
+      <td>${fmtT(c.eta_s)}</td>
+      <td>${c.orden}</td>
+      <td><button data-orden="pausar" data-corrida="${c.id}">❚❚</button>
+          <button data-orden="correr" data-corrida="${c.id}">▶</button>
+          <button data-orden="detener" data-corrida="${c.id}">■</button></td></tr>`).join("")
+      : `<tr><td colspan="9">No hay corridas en ${sis.runs}</td></tr>`;
+    dibujar(corridas);
+  } catch (e) { $("hora").textContent = "sin conexión con el servidor"; }
+}
+actualizar();
+setInterval(actualizar, 5000);
+window.addEventListener("resize", actualizar);
+</script>
+</body>
+</html>

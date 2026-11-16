@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>evocarros · visor</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="estilo.css">
+<script type="importmap">
+{ "imports": {
+  "three": "./vendor/three/build/three.module.js",
+  "three/addons/": "./vendor/three/addons/"
+} }
+</script>
+</head>
+<body class="visor">
+<header>
+  <a href="/" class="marca">evocarros</a>
+  <label>Corrida <select id="selCorrida"></select></label>
+  <label>Generación <select id="selGen"></select></label>
+  <button id="btnFantasma" title="Agrega el campeón de otra generación a la carrera">+ fantasma</button>
+  <select id="selFantasma"></select>
+  <span class="sep"></span>
+  <button id="btnInicio" title="Volver al inicio de la carrera">⏮</button>
+  <button id="btnPlay">▶</button>
+  <select id="selVel"><option>0.5</option><option selected>1</option><option>2</option><option>4</option><option>8</option></select>×
+  <input id="tiempo" type="range" min="0" max="1" step="0.001" value="0">
+  <span id="reloj">0.0 s</span>
+  <span class="sep"></span>
+  <label>cámara <select id="selCamara"><option value="libre">libre</option><option value="seguir">seguir</option><option value="bordo">a bordo</option></select></label>
+  <label><input type="checkbox" id="chkEntorno" checked> entorno</label>
+  <label><input type="checkbox" id="chkCP" checked> checkpoints</label>
+  <label><input type="checkbox" id="chkMuertos" checked> muertos</label>
+  <label title="Sonido de choque cuando un carro toca un borde"><input type="checkbox" id="chkSonido" checked> sonido</label>
+</header>
+<main>
+  <div id="lienzo"></div>
+  <aside id="ficha" class="oculto">
+    <button id="cerrarFicha" title="cerrar">×</button>
+    <h2 id="fTitulo">Carro</h2>
+    <table id="fDatos"></table>
+    <h3>Sentidos</h3>
+    <div id="fRayos"></div>
+    <h3 id="fCerebroTitulo">Cerebro</h3>
+    <div id="fCerebro"></div>
+  </aside>
+  <div id="aviso"></div>
+</main>
+<footer>Trazados: TUM racetrack-database (LGPL-3.0). Entorno: © colaboradores de OpenStreetMap (ODbL).</footer>
+<script type="module" src="visor.js"></script>
+</body>
+</html>

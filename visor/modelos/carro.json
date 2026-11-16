@@ -1,0 +1,8 @@
+{
+  "largo_m": 4.0,
+  "ancho_m": 1.8,
+  "frente": "+X en Blender y en glTF (Y de Blender pasa a -Z en glTF; Z arriba pasa a Y arriba)",
+  "origen": "centro del rectángulo de choque, a nivel del suelo",
+  "caras": 164,
+  "bytes": 33800
+}
